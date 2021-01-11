@@ -16,7 +16,7 @@ variable "ip_range" { # Set you IP.
 }
 
 variable "availability_zones" {
-  default = ["eu-west-1", "eu-west-2"]
+  default = ["eu-west-3a", "eu-west-3b"]
 }
 
 variable "instance_type" {
