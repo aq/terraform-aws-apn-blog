@@ -34,6 +34,7 @@ module "launch_configurations" {
 
 module "load_balancers" {
   source                    = "./load_balancers"
+  availability_zones        = var.availability_zones
   public_subnet_id          = module.site.public_subnet_id
   webapp_http_inbound_sg_id = module.site.webapp_http_inbound_sg_id
 }
