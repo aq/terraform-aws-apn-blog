@@ -40,11 +40,14 @@ module "load_balancers" {
 }
 
 module "autoscaling_groups" {
-  source           = "./autoscaling_groups"
-  public_subnet_id = module.site.public_subnet_id
-  webapp_lc_id     = module.launch_configurations.webapp_lc_id
-  webapp_lc_name   = module.launch_configurations.webapp_lc_name
-  webapp_elb_name  = module.load_balancers.webapp_elb_name
+  source             = "./autoscaling_groups"
+  availability_zones = var.availability_zones
+  asg_min            = var.asg_min
+  asg_max            = var.asg_max
+  public_subnet_id   = module.site.public_subnet_id
+  webapp_lc_id       = module.launch_configurations.webapp_lc_id
+  webapp_lc_name     = module.launch_configurations.webapp_lc_name
+  webapp_elb_name    = module.load_balancers.webapp_elb_name
 }
 
 module "instances" {
