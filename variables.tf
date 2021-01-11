@@ -9,21 +9,21 @@
 # BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations under the License.
 variable "region" {
-  default = "us-west-2"
+  default = "eu-west-3" # Paris
 }
-variable "ip_range" {
-  default = "0.0.0.0/0" # Change to your IP Range!
+
+variable "ip_range" { # Set you IP.
 }
+
 variable "availability_zones" {
   # No spaces allowed between az names!
-  default = ["us-west-2a","us-west-2b","us-west-2c"]
+  default = ["eu-west-1","eu-west-2"]
 }
-variable "key_name" {
-  default = "joshcb"
-}
+
 variable "instance_type" {
   default = "t2.nano"
 }
+
 variable "asg_min" {
   default = "2"
 }
