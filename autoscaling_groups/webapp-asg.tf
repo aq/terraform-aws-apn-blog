@@ -45,7 +45,7 @@ resource "aws_cloudwatch_metric_alarm" "scale_up_alarm" {
   statistic = "Average"
   threshold = "80"
   insufficient_data_actions = []
-  dimensions {
+  dimensions = {
       AutoScalingGroupName = "${aws_autoscaling_group.webapp_asg.name}"
   }
   alarm_description = "EC2 CPU Utilization"
@@ -73,7 +73,7 @@ resource "aws_cloudwatch_metric_alarm" "scale_down_alarm" {
   statistic = "Average"
   threshold = "30"
   insufficient_data_actions = []
-  dimensions {
+  dimensions = {
       AutoScalingGroupName = "${aws_autoscaling_group.webapp_asg.name}"
   }
   alarm_description = "EC2 CPU Utilization"
