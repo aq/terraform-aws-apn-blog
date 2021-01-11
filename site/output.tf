@@ -10,10 +10,6 @@ output "ssh_from_bastion_sg_id" {
   value = aws_security_group.ssh_from_bastion_sg.id
 }
 
-output "nat_sg_id" {
-  value = aws_security_group.nat.id
-}
-
 output "web_access_from_nat_sg_id" {
   value = aws_security_group.web_access_from_nat_sg.id
 }

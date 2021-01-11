@@ -23,7 +23,7 @@ resource "aws_security_group" "webapp_http_inbound_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  vpc_id = aws_vpc.default.id
+  vpc_id = aws_vpc.this.id
   tags = {
     Name = "terraform_demo_webapp_http_inbound"
   }
@@ -36,9 +36,9 @@ resource "aws_security_group" "webapp_ssh_inbound_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["${var.ip_range}"]
+    cidr_blocks = [var.ip_range]
   }
-  vpc_id = aws_vpc.default.id
+  vpc_id = aws_vpc.this.id
   tags = {
     Name = "terraform_demo_webapp_ssh_inbound"
   }
@@ -53,7 +53,7 @@ resource "aws_security_group" "webapp_outbound_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  vpc_id = aws_vpc.default.id
+  vpc_id = aws_vpc.this.id
   tags = {
     Name = "terraform_demo_webapp_outbound"
   }

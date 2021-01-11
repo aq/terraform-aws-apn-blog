@@ -36,10 +36,7 @@ resource "aws_security_group" "ssh_from_bastion_sg" {
     from_port = 22
     to_port   = 22
     protocol  = "tcp"
-    security_groups = [
-      aws_security_group.bastion_ssh_sg.id,
-      aws_security_group.nat.id
-    ]
+    security_groups = [aws_security_group.bastion_ssh_sg.id]
   }
   vpc_id = aws_vpc.this.id
   tags = {
