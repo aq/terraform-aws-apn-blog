@@ -16,7 +16,6 @@ variable "ip_range" { # Set you IP.
 }
 
 variable "availability_zones" {
-  # No spaces allowed between az names!
   default = ["eu-west-1","eu-west-2"]
 }
 
@@ -25,31 +24,31 @@ variable "instance_type" {
 }
 
 variable "asg_min" {
-  default = "2"
+  default = "1"
 }
 variable "asg_max" {
-  default = "5"
-}
-variable "asg_desired" {
   default = "2"
 }
-# Amazon Linux AMI
-# Most recent as of 2015-12-02
+variable "asg_desired" {
+  default = "1"
+}
+
 variable "amis" {
   default = {
-    us-east-1 = "ami-60b6c60a"
-    us-west-2 = "ami-f0091d91"
+    eu-west-3 = "ami-00798d7180f25aac2"
   }
 }
+
 variable "vpc_cidr" {
   description = "CIDR for the whole VPC"
-  default = "10.0.0.0/16"
+  default = "192.169.0.0/21"
 }
+
 variable "public_subnet_cidr" {
   description = "CIDR for the Public Subnet"
-  default = "10.0.0.0/24"
+  default = "192.168.1.0/28"
 }
 variable "private_subnet_cidr" {
   description = "CIDR for the Private Subnet"
-  default = "10.0.1.0/24"
+  default = "192.168.2.0/28"
 }
