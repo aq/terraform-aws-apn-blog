@@ -16,7 +16,7 @@ variable "ip_range" { # Set you IP.
 }
 
 variable "availability_zones" {
-  default = ["eu-west-1","eu-west-2"]
+  default = ["eu-west-1", "eu-west-2"]
 }
 
 variable "instance_type" {
@@ -41,14 +41,14 @@ variable "amis" {
 
 variable "vpc_cidr" {
   description = "CIDR for the whole VPC"
-  default = "192.169.0.0/21"
+  default     = "192.168.0.0/21"
 }
 
 variable "public_subnet_cidr" {
   description = "CIDR for the Public Subnet"
-  default = "192.168.1.0/28"
+  default     = "192.168.1.0/28"
 }
 variable "private_subnet_cidr" {
   description = "CIDR for the Private Subnet"
-  default = "192.168.2.0/28"
+  default     = "192.168.2.0/28"
 }

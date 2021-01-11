@@ -10,37 +10,34 @@
 # License for the specific language governing permissions and limitations under the License.
 
 resource "aws_security_group" "web_access_from_nat_sg" {
-  name = "private_subnet_web_access"
+  name        = "private_subnet_web_access"
   description = "Allow web access to the private subnet from the public subnet (via NAT instance)"
   ingress {
-    from_port = 80
-    to_port = 80
-    protocol = "tcp"
-    cidr_blocks = ["${aws_subnet.demo_public.cidr_block}"]
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = [aws_subnet.demo_public.cidr_block]
   }
   ingress {
-    from_port = 443
-    to_port = 443
-    protocol = "tcp"
-    cidr_blocks = ["${aws_subnet.demo_public.cidr_block}"]
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = [aws_subnet.demo_public.cidr_block]
   }
   ingress {
-    from_port = -1
-    to_port = -1
-    protocol = "icmp"
-    cidr_blocks = ["${aws_subnet.demo_public.cidr_block}"]
+    from_port   = -1
+    to_port     = -1
+    protocol    = "icmp"
+    cidr_blocks = [aws_subnet.demo_public.cidr_block]
   }
   egress {
-    from_port = 0
-    to_port = 0
-    protocol = "-1"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  vpc_id = "${aws_vpc.default.id}"
+  vpc_id = aws_vpc.this.id
   tags = {
-      Name = "terraform"
+    Name = "terraform"
   }
-}
-output "web_access_from_nat_sg_id" {
-  value = "${aws_security_group.web_access_from_nat_sg.id}"
 }
