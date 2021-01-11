@@ -52,10 +52,13 @@ module "autoscaling_groups" {
 
 module "instances" {
   source                    = "./instances"
+  region                    = var.region
+  key_name                  = aws_key_pair.this.key_name
+  amis                      = var.amis
+  instance_type             = var.instance_type
   public_subnet_id          = module.site.public_subnet_id
   bastion_ssh_sg_id         = module.site.bastion_ssh_sg_id
   private_subnet_id         = module.site.private_subnet_id
   ssh_from_bastion_sg_id    = module.site.ssh_from_bastion_sg_id
   web_access_from_nat_sg_id = module.site.web_access_from_nat_sg_id
-  key_name                  = aws_key_pair.this.key_name
 }
