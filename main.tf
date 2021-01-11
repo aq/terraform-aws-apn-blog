@@ -13,13 +13,19 @@ provider "aws" {
 }
 
 module "site" {
-  source   = "./site"
-  key_name = aws_key_pair.this.key_name
-  ip_range = var.ip_range
+  source              = "./site"
+  ip_range            = var.ip_range
+  availability_zones  = var.availability_zones
+  vpc_cidr            = var.vpc_cidr
+  public_subnet_cidr  = var.public_subnet_cidr
+  private_subnet_cidr = var.private_subnet_cidr
 }
 
 module "launch_configurations" {
   source                    = "./launch_configurations"
+  region                    = var.region
+  instance_type             = var.instance_type
+  amis                      = var.amis
   webapp_http_inbound_sg_id = module.site.webapp_http_inbound_sg_id
   webapp_ssh_inbound_sg_id  = module.site.webapp_ssh_inbound_sg_id
   webapp_outbound_sg_id     = module.site.webapp_outbound_sg_id
